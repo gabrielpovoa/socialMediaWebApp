@@ -3,7 +3,7 @@ import { People } from '../People'
 import { Header } from '../template/Header'
 import { UserData } from '@/app/data/userData'
 
-export const Home = () => {
+export const PeopleLocal = () => {
     return <>
         <Header />
         <main className='p-8 '>

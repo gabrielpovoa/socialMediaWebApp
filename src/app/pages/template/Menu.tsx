@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 type Props = {
     closeModal: () => void;
@@ -21,10 +22,26 @@ export const Menu = ({ closeModal }: Props) => {
             </div>
             <nav className='hamburger '>
                 <ul className='sm:gap-0 md:gap-4 lg:gap-6 xl:gap-6'>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">People</a></li>
-                    <li><a href="#">Settings</a></li>
+                    <li>
+                        <Link to="/">
+                            Home
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/Profile">
+                            Profile
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/People">
+                            People
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/Settings">
+                            Settings
+                        </Link>
+                    </li>
                 </ul>
             </nav>
         </section>
