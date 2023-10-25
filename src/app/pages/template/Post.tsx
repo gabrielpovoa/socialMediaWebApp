@@ -9,6 +9,7 @@ export const Post = () => {
         setPost(e.target.value);
     }
 
+    // STILL WORKING ON THAT FIELD OF MAKE A POST, INCREMENT THIS ON ARRAY AND DISPLAY IT.
     useEffect(() => {
         generateRondonId();
     },[post])
