@@ -6,6 +6,29 @@ import { Posts } from './Posts';
 export const Post = () => {
     const [post, setPost] = useState('');
     const [error, setError] = useState('');
+    const [json, setJson] = useState('');
+    const [name, setName] = useState('');
+
+    useEffect(() => {
+        getDataFromApi();
+        // getDataFromRondomNameApi()
+    })
+
+    const getDataFromApi = async () => {
+        // for (let i = 0; i <= 20; i++) {}
+            let req = await fetch('https://dog.ceo/api/breeds/image/random');
+            let json = await req.json();
+            setJson(json.message)
+    }
+
+    // Still searching for an api that display an user name ;
+
+    const getDataFromRondomNameApi = async () => {
+        // for (let i = 0; i <= 20; i++) {}
+            let req = await fetch('https://api.api-ninjas.com/v1/randomuser');
+            let json = await req.json();
+            console.log(json.name)
+    }
 
     const handlePost = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setPost(e.target.value);
@@ -21,12 +44,12 @@ export const Post = () => {
             setError('You need to write down a post to display it.');
         } else {
             const newPost: PostType = {
-                id: (post.length + 1),
-                userId: (post.length + 1) as number,
+                id: new Date().getMilliseconds() as number,
+                userId: new Date().getMilliseconds() as number,
                 post: post as string,
-                postedBy: 'new user' as string,
-                date: new Date().toString() as string,
-                avatar: 'https://cdn.mos.cms.futurecdn.net/BX7vjSt8KMtcBHyisvcSPK.jpg' as string,
+                postedBy: name as string,
+                date: `${new Date().toLocaleDateString()} - ${new Date().getHours()}:${new Date().getMinutes()}`,
+                avatar: json as string,
             };
 
             addNewPost(newPost);
