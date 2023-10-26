@@ -3,7 +3,6 @@ import { Header } from '../template/Header'
 import React from 'react'
 import { Post } from '../template/Post'
 import { FriendList } from '../template/FriendList'
-import { Posts } from '../template/Posts'
 
 export const Home = () => {
     return <>
@@ -17,13 +16,10 @@ export const Home = () => {
             </section>
             <Post />
             <aside
-                className='w-72 p-8 flex flex-col justify-start items-baseline scroll-container overflow-y-auto h-full absolute top-0 right-0 bottom-0'>
+                className='hidden p-8 flex-col justify-start items-baseline scroll-container overflow-y-auto h-full absolute top-0 right-0 bottom-0 mt-6 md:w-60 md:flex sm:w-72 lg:w-72 xl:w-72'>
                 <h1 className='text-2xl text-center mb-8 font-bold'>Online Friends</h1>
                 <FriendList />
             </aside>
-            <section className='flex flex-col flex-1 gap-8 mt-8'>
-                <Posts/>
-            </section>
         </main>
     </>
 }
