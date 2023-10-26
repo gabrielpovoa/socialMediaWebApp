@@ -1,7 +1,9 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,800;6..12,1000&display=swap');
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -20,7 +22,6 @@
 
 html {
   font-size: 62.5%;
-  font-family: 'Courier New', Courier, monospace;
 }
 
 ::-webkit-scrollbar {
@@ -58,6 +59,7 @@ html {
 }
 
 body {
+  font-family: 'Nunito Sans', sans-serif;
   color: #0A0908;
   background: #F2F4F3;
 }
@@ -88,6 +90,16 @@ body {
 
 .hamburger ul li:hover {
   border-bottom: 1rem solid #B4C5E4;
+}
+
+#notificationSize {
+  height: 35rem;
+  max-height: 100%;
+}
+@media screen and (max-wdith: 450px){
+  #notificationSize {
+    width: 100%;
+  }
 }
 
 /* Home Area */
