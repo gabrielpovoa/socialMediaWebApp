@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { addNewPost } from '@/app/data/postData';
 import { Post as PostType } from '@/app/types/PostsType';
 import { Posts } from './Posts';
+import { api } from '@/api/Api';
 
 export const Post = () => {
+    const defaultAvatar = 'https://i.stack.imgur.com/l60Hf.png'
     const [post, setPost] = useState('');
     const [error, setError] = useState('');
     const [json, setJson] = useState('');
@@ -15,19 +17,16 @@ export const Post = () => {
     })
 
     const getDataFromApi = async () => {
-        // for (let i = 0; i <= 20; i++) {}
-            let req = await fetch('https://dog.ceo/api/breeds/image/random');
-            let json = await req.json();
-            setJson(json.message)
+        let json = await api.getUserAvatar();
+        setJson(json.message)
     }
 
     // Still searching for an api that display an user name ;
 
     const getDataFromRondomNameApi = async () => {
-        // for (let i = 0; i <= 20; i++) {}
-            let req = await fetch('https://api.api-ninjas.com/v1/randomuser');
-            let json = await req.json();
-            console.log(json.name)
+        let req = await fetch('https://api.api-ninjas.com/v1/randomuser');
+        let json = await req.json();
+        console.log(json.name)
     }
 
     const handlePost = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -49,7 +48,7 @@ export const Post = () => {
                 post: post as string,
                 postedBy: name as string,
                 date: `${new Date().toLocaleDateString()} - ${new Date().getHours()}:${new Date().getMinutes()}`,
-                avatar: json as string,
+                avatar: json || defaultAvatar,
             };
 
             addNewPost(newPost);
