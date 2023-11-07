@@ -2,6 +2,7 @@ import React from 'react'
 import { Routes, Route } from 'react-router-dom';
 import { Home } from '../pages/Home';
 import { PeopleLocal } from '../pages/Local';
+import { Profile } from '../pages/Profile';
 
 export const RouteList = () => {
     return <>
@@ -12,7 +13,7 @@ export const RouteList = () => {
             />
             <Route
                 path='/Profile'
-                element={<Home />}
+                element={<Profile />}
             />
             <Route
                 path='/People'

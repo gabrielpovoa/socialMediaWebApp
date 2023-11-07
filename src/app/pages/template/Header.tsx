@@ -1,9 +1,7 @@
 'use client'
-
-import { useState, useEffect } from "react"
+import { useContext, useState } from "react"
 import { Menu } from "./Menu"
 import { Bell } from "./Bell";
-
 
 export const Header = () => {
   const [menu, setMenu] = useState(false);
@@ -27,11 +25,11 @@ export const Header = () => {
           <div className="text-3xl cursor-pointer p-3 rounded-lg" style={{ background: "#FBF9FF" }} onClick={toggleMenu}> ☰</div>
         </div>
         <div className="ml-4 font-bold text-2xl">
-          PEOPLE
+          ROUTE NAME
         </div>
 
 
-        <Bell/>
+        <Bell />
       </nav>
     </header>
     {menu == true &&
