@@ -9,7 +9,7 @@ export const Posts = () => {
         <div className='flex items-center p-2 rounded'>
           <img src={item.avatar} alt={item.postedBy} className='w-20 h-20 object-cover rounded-full' />
           <div className="ml-4 flex flex-col gap-2 items-baseline">
-            <h2 className='text-2xl font-semibold' style={{ color: '#0E79B2' }}>#{item.userId} - {item.postedBy}</h2>
+            <h2 className='text-2xl font-semibold' style={{ color: '#0E79B2' }}>#{item.postedBy}</h2>
             <span className='' style={{ color: '#BF1363' }}>{item.date}</span>
           </div>
         </div>

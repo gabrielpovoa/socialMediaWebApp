@@ -21,14 +21,6 @@ export const Post = () => {
         setJson(json.message)
     }
 
-    // Still searching for an api that display an user name ;
-
-    const getDataFromRondomNameApi = async () => {
-        let req = await fetch('https://api.api-ninjas.com/v1/randomuser');
-        let json = await req.json();
-        console.log(json.name)
-    }
-
     const handlePost = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setPost(e.target.value);
     }
@@ -46,7 +38,7 @@ export const Post = () => {
                 id: new Date().getMilliseconds() as number,
                 userId: new Date().getMilliseconds() as number,
                 post: post as string,
-                postedBy: name as string,
+                postedBy: `User - ${new Date().getMilliseconds() as number}`,
                 date: `${new Date().toLocaleDateString()} - ${new Date().getHours()}:${new Date().getMinutes()}`,
                 avatar: json || defaultAvatar,
             };
