@@ -3,13 +3,16 @@ import { addNewPost } from '@/app/data/postData';
 import { Post as PostType } from '@/app/types/PostsType';
 import { Posts } from './Posts';
 import { api } from '@/api/Api';
+import { UserLoginContext } from '@/contexts/LoginUser';
 
 export const Post = () => {
     const defaultAvatar = 'https://i.stack.imgur.com/l60Hf.png'
     const [post, setPost] = useState('');
     const [error, setError] = useState('');
     const [json, setJson] = useState('');
-    const [name, setName] = useState('');
+
+    const usernameCtx = useContext(UserLoginContext);
+
 
     useEffect(() => {
         getDataFromApi();
@@ -38,7 +41,7 @@ export const Post = () => {
                 id: new Date().getMilliseconds() as number,
                 userId: new Date().getMilliseconds() as number,
                 post: post as string,
-                postedBy: `User - ${new Date().getMilliseconds() as number}`,
+                postedBy: usernameCtx?.name as string,
                 date: `${new Date().toLocaleDateString()} - ${new Date().getHours()}:${new Date().getMinutes()}`,
                 avatar: json || defaultAvatar,
             };

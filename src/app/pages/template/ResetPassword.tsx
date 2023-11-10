@@ -23,8 +23,8 @@ export const ResetPassword = () => {
 
 
     return (
-        <button onClick={handleWithResetPassword}>
-            ResetPassword
+        <button onClick={handleWithResetPassword} className='text-gray-700'>
+            Did you forgot your password?
         </button>
     )
 }

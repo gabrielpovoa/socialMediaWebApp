@@ -22,7 +22,7 @@ export const Menu = ({ closeModal }: Props) => {
             <nav className='hamburger '>
                 <ul className='sm:gap-0 md:gap-4 lg:gap-6 xl:gap-6'>
                     <li>
-                        <Link to="/">
+                        <Link to="/Home">
                             Home
                         </Link>
                     </li>

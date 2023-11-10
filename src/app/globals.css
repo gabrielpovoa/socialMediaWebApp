@@ -64,6 +64,10 @@ body {
   background: #F2F4F3;
 }
 
+input {
+  text-transform: none;
+}
+
 
 #header {
   box-shadow: var(--box-shadow);

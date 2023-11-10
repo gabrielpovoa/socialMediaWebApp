@@ -1,38 +1,67 @@
-
+import { UserLoginContext } from "@/contexts/LoginUser"
+import { ResetPassword } from "../template/ResetPassword"
+import { useContext, useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
-  return <>
-    <div className="h-screen flex flex-col flex-1 items-center justify-center overflow-x-hidden" style={{background:"#2F3061", boxShadow:"0px 10px 15px -3px rgba(0,0,0,0.1)"}}>
-    <h1 className="text-center font-extrabold text-5xl text-white mb-10">Login</h1>
-      <div className="">
-        <form action="" method="get"
-          className="flex flex-col items-center justify-center gap-4 bg-gray-50 rounded-md"
-          style={{ width: '90rem', height: '45rem' }}
-        >
-          <label htmlFor="" className="flex flex-col text-2xl text-blue-600"
-            style={{ width: '35rem', maxWidth: '100%' }}
-          >
-            user
-            <input type="text" placeholder="username"
-              className="p-4 rounded-md mt-3 normal-case"
-              style={{ background: '#DFDFDF' }}
+  const userAuthCtx = useContext(UserLoginContext);
+  const navigate = useNavigate();
+
+  const [warn, setWarn] = useState(false);
+
+  const validateUser = () => {
+
+    const trimmedName = userAuthCtx?.name.trim();
+    const trimmedPassword = userAuthCtx?.password.trim();
+
+    if (trimmedName === userAuthCtx?.Usernamekey && trimmedPassword === userAuthCtx?.PasswordKey) {
+
+      navigate('/Home');
+    } else {
+      setWarn(true);
+    }
+  };
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-blue-900 text-white">
+      <div className="w-full max-w-md p-4 bg-white rounded-md shadow-md" style={{ width: "90vw", maxWidth: "40rem", padding: "1rem" }}>
+        <h1 className="text-3xl font-extrabold text-center mb-6">Login</h1>
+        {warn && <p className="text-red-500 mb-4 text-center">Username or password is incorrect. Try again!🤔</p>}
+        {!warn && <p className="text-blue-700 mb-4 text-2xl text-center">Login 👨🏾‍💻✅</p>}
+        <form className="flex flex-col gap-4" onClick={e => e.preventDefault()}>
+          <label className="flex flex-col text-2xl text-blue-600">
+            User
+            <input
+              type="text"
+              placeholder="Username"
+              className="p-4 rounded-md mt-3 normal-case bg-gray-200"
+              value={userAuthCtx?.name}
+              onChange={(e) => userAuthCtx?.setName(e.target.value)}
             />
           </label>
-          <label htmlFor="" className="flex flex-col text-2xl text-blue-600"
-            style={{ width: '35rem', maxWidth: '100%' }}
-          >
-            passkey
-            <input type="password" placeholder="password"
-              className="p-4 rounded-md mt-3"
-              style={{ background: '#DFDFDF' }}
+          <label className="flex flex-col text-2xl text-blue-600">
+            Passkey
+            <input
+              type="password"
+              placeholder="Password"
+              className="p-4 rounded-md mt-3 bg-gray-200"
+              value={userAuthCtx?.password}
+              onChange={(e) => userAuthCtx?.setPassword(e.target.value)}
             />
           </label>
-          <input type="submit" value="send"
-            className="p-4 rounded-md text-white font-light text-2xl max-w-full cursor-pointer"
-            style={{ background: '#0E34A0' }}
-          />
+          <div className="flex flex-col gap-4">
+            <button
+              type="button"
+              onClick={validateUser}
+              className="bg-blue-700 text-white p-4 rounded-md text-2xl cursor-pointer hover:bg-blue-600 transition-opacity"
+            >
+              Send
+            </button>
+            <ResetPassword />
+          </div>
         </form>
       </div>
     </div>
-  </>
-}
+  );
+};
+

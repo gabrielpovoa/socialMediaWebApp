@@ -1,6 +1,4 @@
-import { redirect } from "next/dist/server/api-utils";
 import { ReactNode, createContext, useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 interface UserLoginContextType {
     name: string,
