@@ -3,6 +3,7 @@ import { useContext, useState } from "react"
 import { Menu } from "./Menu"
 import { Bell } from "./Bell";
 import { useLocation } from "react-router-dom";
+import { UserProfile } from "./ProfileAvatar";
 
 export const Header = () => {
   const [menu, setMenu] = useState(false);
@@ -34,6 +35,7 @@ export const Header = () => {
         </div>
 
 
+        <UserProfile />
         <Bell />
       </nav>
     </header>
