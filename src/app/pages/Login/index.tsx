@@ -14,8 +14,8 @@ export const Login = () => {
     const trimmedName = userAuthCtx?.name.trim();
     const trimmedPassword = userAuthCtx?.password.trim();
 
-    if (trimmedName === userAuthCtx?.Usernamekey && trimmedPassword === userAuthCtx?.PasswordKey) {
 
+    if (trimmedName === userAuthCtx?.Usernamekey && trimmedPassword === userAuthCtx?.PasswordKey) {
       navigate('/Home');
     } else {
       setWarn(true);

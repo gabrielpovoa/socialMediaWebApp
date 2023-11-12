@@ -4,6 +4,7 @@ import { Home } from '../pages/Home';
 import { PeopleLocal } from '../pages/Local';
 import { Profile } from '../pages/Profile';
 import { Login } from '../pages/Login';
+import { NotFound } from '../pages/template/NotFound';
 
 export const RouteList = () => {
     return <>
@@ -27,6 +28,10 @@ export const RouteList = () => {
             <Route
                 path='/Settings'
                 element={<Home />}
+            />
+             <Route
+                path='*'
+                element={<NotFound />}
             />
         </Routes>
     </>

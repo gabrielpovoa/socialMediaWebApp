@@ -2,9 +2,14 @@
 import { useContext, useState } from "react"
 import { Menu } from "./Menu"
 import { Bell } from "./Bell";
+import { useLocation } from "react-router-dom";
 
 export const Header = () => {
   const [menu, setMenu] = useState(false);
+  const location = useLocation();
+
+  const slugRoute = location.pathname.split('/');
+
 
   const toggleMenu = () => {
     if (menu == true) {
@@ -24,8 +29,8 @@ export const Header = () => {
           </div>
           <div className="text-3xl cursor-pointer p-3 rounded-lg" style={{ background: "#FBF9FF" }} onClick={toggleMenu}> ☰</div>
         </div>
-        <div className="ml-4 font-bold text-2xl">
-          ROUTE NAME
+        <div className="ml-4 font-bold text-2xl uppercase">
+          {slugRoute}
         </div>
 
 
