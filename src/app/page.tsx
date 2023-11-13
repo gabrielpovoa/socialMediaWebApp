@@ -2,6 +2,7 @@
 import { BrowserRouter } from "react-router-dom";
 import { RouteList } from "./Route/RouteList";
 import { UserLoginProvider } from "@/contexts/LoginUser";
+import { Footer } from "./pages/template/Footer";
 
 const App = () => {
   return (

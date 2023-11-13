@@ -1,11 +1,15 @@
-import React, { ChangeEvent, useContext } from 'react'
-import { Header } from '../template/Header'
+import React, { ChangeEvent } from 'react'
 import Swal from 'sweetalert2'
+
+import { Header } from '../template/Header'
 import { ProfilePreview } from '../template/ProfilePreview'
-import { UserLoginContext } from '@/contexts/LoginUser'
+import { useAuthUser } from '@/contexts/LoginUser'
+import { useNavigate } from 'react-router-dom'
+import { ChangeName } from '../template/ChangeName'
 
 export const Profile = () => {
-    const photoFilectx = useContext(UserLoginContext);
+    const photoFilectx = useAuthUser()
+    const navigateTo = useNavigate();
 
     const areYouSureOnSaveChnges = () => {
         Swal.fire({
@@ -15,9 +19,11 @@ export const Profile = () => {
             confirmButtonText: "Save",
             denyButtonText: `Don't save`
         }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-                Swal.fire("Saved!", "", "success");
+                setTimeout(() => {
+                    Swal.fire("Saved!", "", "success");
+                    navigateTo('/Home');
+                }, 1000)
             } else if (result.isDenied) {
                 Swal.fire("Changes are not saved", "", "info");
             }
@@ -26,52 +32,39 @@ export const Profile = () => {
 
     const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files[0];
-    
-        // Update the user's photo file when the input changes
         photoFilectx?.setPhotoFile(file);
-    
-        // You might also want to display a preview of the selected image
+
         if (file) {
-          const reader = new FileReader();
-          reader.onloadend = () => {
-            photoFilectx?.setPhoto(reader.result as string);
-          };
-          reader.readAsDataURL(file);
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                photoFilectx?.setPhoto(reader.result as string);
+            };
+            reader.readAsDataURL(file);
         } else {
-          photoFilectx?.setPhoto('');
+            photoFilectx?.setPhoto('');
         }
-      };
+    };
 
     return <>
         <Header />
-        <main className='p-20 '>
+        <main className='p-7 md:p-20 '>
             <section className='flex flex-1 items-start flex-wrap gap-8 '>
                 <label htmlFor="SelectPhoto" className='text-4xl text-blue-600 font-bold cursor-pointer'>
-                    <section className='bg-gray-200 p-3 rounded-md flex items-center justify-center'
+                    <section className='bg-gray-200 p-3 rounded-md flex items-center justify-center  '
                         style={{
-                            width: "20rem", height: '30rem', boxShadow: '0px 10px 15px -3px rgba(0,0,0,0.1)'
+                            width: "30rem", height: '30rem', boxShadow: '0px 10px 15px -3px rgba(0,0,0,0.1)'
                         }}
                     >
                         select a photo
                         <input type="file" accept="image/*" onChange={handleFileChange} hidden name='SelectPhoto' id='SelectPhoto' />
                     </section>
                 </label>
-                <form className='bg-gray-50 w-fit rounded-md flex flex-col p-7'
-                    style={{ height: '30rem', boxShadow: '0px 10px 15px -3px rgba(0,0,0,0.1)' }}>
-                    <label htmlFor="changeName" className='w-96 flex flex-col gap-4 text-5sm text-blue-600'>
-                        change your name here!
-                        <input type="text" name='changeName'
-                            className='p-4 rounded-sm'
-                        />
-                    </label>
-                    <input
-                        type="submit"
-                        value="Change Name"
-                        className='w-96 rounded-sm mt-6 bg-indigo-600 text-white p-4 cursor-pointer'
-                    />
-                </form>
+
+                <ChangeName />
                 <ProfilePreview />
+                
             </section>
+
             <button
                 onClick={areYouSureOnSaveChnges}
                 className='mt-6 p-6 text-white font-2xl w-fit bg-blue-700 hover:opacity-80 rounded-md'>

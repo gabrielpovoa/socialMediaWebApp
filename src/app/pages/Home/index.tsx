@@ -1,12 +1,12 @@
 import { Header } from '../template/Header'
 
-import React, { useContext } from 'react'
+import React from 'react'
 import { Post } from '../template/Post'
 import { FriendList } from '../template/FriendList'
-import { UserLoginContext } from '@/contexts/LoginUser'
+import {  useAuthUser } from '@/contexts/LoginUser'
 
 export const Home = () => {
-    const usernameCtx = useContext(UserLoginContext);
+    const usernameCtx = useAuthUser();
     return <>
         <Header />
         <main className='p-8 relative'>

@@ -1,10 +1,10 @@
-import { UserLoginContext } from "@/contexts/LoginUser"
+import { useAuthUser } from "@/contexts/LoginUser"
 import { ResetPassword } from "../template/ResetPassword"
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
-  const userAuthCtx = useContext(UserLoginContext);
+  const userAuthCtx = useAuthUser();
   const navigate = useNavigate();
 
   const [warn, setWarn] = useState(false);
@@ -22,7 +22,7 @@ export const Login = () => {
     }
   };
 
-  return (
+  return <>
     <div className="min-h-screen flex items-center justify-center bg-blue-900 text-white">
       <div className="w-full max-w-md p-4 bg-white rounded-md shadow-md" style={{ width: "90vw", maxWidth: "40rem", padding: "1rem" }}>
         <h1 className="text-3xl font-extrabold text-center mb-6">Login</h1>
@@ -62,6 +62,6 @@ export const Login = () => {
         </form>
       </div>
     </div>
-  );
+  </>
 };
 

@@ -1,22 +1,20 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { addNewPost } from '@/app/data/postData';
 import { Post as PostType } from '@/app/types/PostsType';
 import { Posts } from './Posts';
 import { api } from '@/api/Api';
-import { UserLoginContext } from '@/contexts/LoginUser';
+import { useAuthUser } from '@/contexts/LoginUser';
 
 export const Post = () => {
-    const defaultAvatar = 'https://i.stack.imgur.com/l60Hf.png'
     const [post, setPost] = useState('');
     const [error, setError] = useState('');
     const [json, setJson] = useState('');
 
-    const usernameCtx = useContext(UserLoginContext);
+    const usernameCtx = useAuthUser();
 
 
     useEffect(() => {
         getDataFromApi();
-        // getDataFromRondomNameApi()
     })
 
     const getDataFromApi = async () => {
@@ -28,9 +26,7 @@ export const Post = () => {
         setPost(e.target.value);
     }
 
-    const handleWithWhiteSpace = () => {
-        return post.trim() === '';
-    }
+    const handleWithWhiteSpace = () => post.trim() === '';
 
 
     const createANewPost = () => {
@@ -43,7 +39,7 @@ export const Post = () => {
                 post: post as string,
                 postedBy: usernameCtx?.name as string,
                 date: `${new Date().toLocaleDateString()} - ${new Date().getHours()}:${new Date().getMinutes()}`,
-                avatar: json || defaultAvatar,
+                avatar: `${usernameCtx?.photo ? usernameCtx?.photo : json}`,
             };
 
             addNewPost(newPost);

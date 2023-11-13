@@ -1,12 +1,6 @@
 import { NotificationType } from '@/app/types/notificationType'
 import React from 'react'
 
-// interface Props {
-//     id:number
-//     label: string,
-//     date: string,
-//     description: string,
-// }
 
 export const Notifications = ({ label, date, description, id }: NotificationType) => {
     return <>
@@ -15,7 +9,7 @@ export const Notifications = ({ label, date, description, id }: NotificationType
                 <span className='w-4 h-4 bg-blue-600 rounded-full'></span>
                 <div className='flex items-start justify-between gap-4'>
                     <h2 className='text-2sm font-bold mb-4'>{label}</h2>
-                    <span className='text-gray-400 font-semibold'>({date})
+                    <span className='text-gray-400 font-semibold'>({new Date().toLocaleDateString()} - {new Date().getHours()}:{new Date().getMinutes()})
                     </span>
                 </div>
             </div>

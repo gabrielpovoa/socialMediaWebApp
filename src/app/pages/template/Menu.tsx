@@ -36,11 +36,6 @@ export const Menu = ({ closeModal }: Props) => {
                             People
                         </Link>
                     </li>
-                    <li>
-                        <Link to="/Settings">
-                            Settings
-                        </Link>
-                    </li>
                 </ul>
             </nav>
         </section>

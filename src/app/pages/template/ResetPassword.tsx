@@ -1,10 +1,10 @@
 import Swal from 'sweetalert2'
 
-import React, { useContext } from 'react'
-import { UserLoginContext } from '@/contexts/LoginUser'
+import React from 'react'
+import { useAuthUser } from '@/contexts/LoginUser'
 
 export const ResetPassword = () => {
-    const passwordCtx = useContext(UserLoginContext)
+    const passwordCtx = useAuthUser();
 
     const handleWithResetPassword = async () => {
 

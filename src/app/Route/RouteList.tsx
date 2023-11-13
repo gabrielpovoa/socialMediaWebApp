@@ -25,10 +25,6 @@ export const RouteList = () => {
                 path='/People'
                 element={<PeopleLocal />}
             />
-            <Route
-                path='/Settings'
-                element={<Home />}
-            />
              <Route
                 path='*'
                 element={<NotFound />}
