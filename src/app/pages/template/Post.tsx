@@ -13,18 +13,14 @@ export const Post = () => {
     const usernameCtx = useAuthUser();
 
 
-    useEffect(() => {
-        getDataFromApi();
-    })
+    useEffect(() => { getDataFromApi(); })
 
     const getDataFromApi = async () => {
         let json = await api.getUserAvatar();
         setJson(json.message)
     }
 
-    const handlePost = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setPost(e.target.value);
-    }
+    const handlePost = (e: React.ChangeEvent<HTMLTextAreaElement>) => setPost(e.target.value); 
 
     const handleWithWhiteSpace = () => post.trim() === '';
 

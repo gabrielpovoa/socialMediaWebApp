@@ -25,8 +25,8 @@ export const Header = () => {
     <header id="header">
       <nav id="headerNav" className="flex items-center justify-between flex-1">
         <div className="flex items-center gap-8">
-          <div className="w-20 h-15">
-            <img src="https://png.pngtree.com/png-clipart/20221223/original/pngtree-cartoon-lighter-png-image_8799702.png" alt="Dev" className="w-full h-full" />
+          <div className="flex items-center justify-center text-4xl bg-gray-300 w-[5rem] h-[5rem] p-8 rounded-full">
+            🐘
           </div>
           <div className="text-3xl cursor-pointer p-3 rounded-lg" style={{ background: "#FBF9FF" }} onClick={toggleMenu}> ☰</div>
         </div>

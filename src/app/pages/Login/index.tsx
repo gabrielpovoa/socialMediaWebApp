@@ -1,6 +1,6 @@
 import { useAuthUser } from "@/contexts/LoginUser"
 import { ResetPassword } from "../template/ResetPassword"
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
@@ -14,13 +14,16 @@ export const Login = () => {
     const trimmedName = userAuthCtx?.name.trim();
     const trimmedPassword = userAuthCtx?.password.trim();
 
-
     if (trimmedName === userAuthCtx?.Usernamekey && trimmedPassword === userAuthCtx?.PasswordKey) {
       navigate('/Home');
     } else {
       setWarn(true);
     }
   };
+
+  const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (event) => event.key === 'Enter' ? validateUser : null;
+
+
 
   return <>
     <div className="min-h-screen flex items-center justify-center bg-blue-900 text-white">
@@ -47,6 +50,7 @@ export const Login = () => {
               className="p-4 rounded-md mt-3 bg-gray-200"
               value={userAuthCtx?.password}
               onChange={(e) => userAuthCtx?.setPassword(e.target.value)}
+              onKeyDown={handleKeyDown}
             />
           </label>
           <div className="flex flex-col gap-4">

@@ -5,7 +5,7 @@ import { Header } from '../template/Header'
 import { ProfilePreview } from '../template/ProfilePreview'
 import { useAuthUser } from '@/contexts/LoginUser'
 import { useNavigate } from 'react-router-dom'
-import { ChangeName } from '../template/ChangeName'
+import { FollowLength } from '../template/FollowLength'
 
 export const Profile = () => {
     const photoFilectx = useAuthUser()
@@ -50,19 +50,15 @@ export const Profile = () => {
         <main className='p-7 md:p-20 '>
             <section className='flex flex-1 items-start flex-wrap gap-8 '>
                 <label htmlFor="SelectPhoto" className='text-4xl text-blue-600 font-bold cursor-pointer'>
-                    <section className='bg-gray-200 p-3 rounded-md flex items-center justify-center  '
-                        style={{
-                            width: "30rem", height: '30rem', boxShadow: '0px 10px 15px -3px rgba(0,0,0,0.1)'
-                        }}
-                    >
+                    <section className='bg-gray-200 p-3 rounded-md flex items-center justify-center w-[30rem] h-[30rem] shadow-md' >
                         select a photo
                         <input type="file" accept="image/*" onChange={handleFileChange} hidden name='SelectPhoto' id='SelectPhoto' />
                     </section>
                 </label>
 
-                <ChangeName />
                 <ProfilePreview />
-                
+                <FollowLength />
+
             </section>
 
             <button

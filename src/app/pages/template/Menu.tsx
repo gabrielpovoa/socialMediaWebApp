@@ -11,7 +11,7 @@ export const Menu = ({ closeModal }: Props) => {
             style={{
                 borderTop: "1rem solid #0C1821",
                 backgroundColor: '#1B2A41',
-                color: "#DDE1E4"
+                color: "#DDE1E4",
             }}
         >
             <div

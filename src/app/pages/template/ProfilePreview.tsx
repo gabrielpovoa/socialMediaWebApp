@@ -5,9 +5,7 @@ export const ProfilePreview = () => {
     const photoFilePreview = useAuthUser();
     return <>
         {!photoFilePreview?.photo || photoFilePreview.photo !== null &&
-            <section className='bg-gray-50 w-full md:w-3/6 p-7 flex flex-col items-start gap-8 h-4/5' style={{
-                width: "30rem", boxShadow: '0px 10px 15px -3px rgba(0,0,0,0.1)'
-            }}>
+            <section className='bg-gray-50 w-full md:w-3/6 p-7 flex flex-col items-start gap-8 h-4/5 shadow-md' style={{ width: "30rem" }}>
                 <h1 className='text-center font-bold text-3xl'>Preview</h1>
                 <img
                     src={photoFilePreview?.photo}

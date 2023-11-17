@@ -2,8 +2,18 @@ import { useState } from 'react'
 import { People } from '../People'
 import { Header } from '../template/Header'
 import { UserData } from '@/app/data/userData'
+import { useFollower } from '@/contexts/Follower'
 
-export const PeopleLocal = () => {
+export const PeopleLocal: React.FC = () => {
+    const [toFollow] = useState(UserData);
+    const follow = useFollower();
+
+
+    const handleFollowChange = (change: number) => {
+        follow?.setFollowingCount((prevCount) => prevCount + change);
+    };
+    
+
     return <>
         <Header />
         <main className='p-8 '>
@@ -14,13 +24,14 @@ export const PeopleLocal = () => {
                 </h1>
             </section>
             <section
-            className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4'
-            >
-                {UserData.map((item) => (
+                className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4' >
+                {toFollow.map((item) => (
                     <People
-                    name={item.name}
-                    avatar={item.avatar}
-                    id={item.id}
+                        name={item.name}
+                        avatar={item.avatar}
+                        id={item.id}
+                        key={item.id}
+                        onFollowChange={handleFollowChange}
                     />
                 ))}
             </section>

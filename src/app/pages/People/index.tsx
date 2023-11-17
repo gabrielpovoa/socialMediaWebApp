@@ -2,20 +2,27 @@ import React, { useState } from 'react'
 import { ButtonFollow } from '../template/ButtonFollow';
 import { UserType } from '@/app/types/userType';
 
-const img = "https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcSclQZplTElYqQQsiWAl-OPA4JvJptEUEqAVFee9aUG7LkIPpNHXOtU6MyCH6giD_ug0T9p97u5hu0oMLs";
 
+interface PeopleProps extends UserType {
+    onFollowChange: (change: number) => void;
+}
 
-
-export const People = ({ name, avatar, id }: UserType) => {
-    const [buttonLabel, setButtonLabel] = useState('Follow');
+export const People: React.FC<PeopleProps> = ({ name, avatar, id, onFollowChange }) => {
+    const [buttonLabel, setButtonLabel] = useState(() => {
+        return localStorage.getItem(`following_${id}`) || 'Follow';
+    });
 
     const handleFollowButton = () => {
         if (buttonLabel === 'Follow') {
-            setButtonLabel('Following')
+            setButtonLabel('Following');
+            onFollowChange(1);
+            localStorage.setItem(`following_${id}`, 'Following');
         } else {
-            setButtonLabel('Follow')
+            setButtonLabel('Follow');
+            onFollowChange(-1);
+            localStorage.setItem(`following_${id}`, 'Follow');
         }
-    }
+    };
 
     return <>
         <section id="followUser" key={id}>
