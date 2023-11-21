@@ -1,5 +1,4 @@
-import { useAuthUser } from '@/contexts/LoginUser'
-import React from 'react'
+import { useAuthUser } from "@/contexts/LoginUser";
 
 export const ProfilePreview = () => {
     const photoFilePreview = useAuthUser();

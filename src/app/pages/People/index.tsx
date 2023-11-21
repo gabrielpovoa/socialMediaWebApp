@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { ButtonFollow } from '../template/ButtonFollow';
 import { UserType } from '@/app/types/userType';
+import { ButtonFollow } from '../template/ButtonFollow';
 
 
 interface PeopleProps extends UserType {

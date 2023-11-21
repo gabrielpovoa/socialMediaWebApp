@@ -1,9 +1,9 @@
-import { Header } from '../template/Header'
 
 import React from 'react'
-import { Post } from '../template/Post'
-import { FriendList } from '../template/FriendList'
 import {  useAuthUser } from '@/contexts/LoginUser'
+import { Header } from '../template/Header';
+import { Post } from '../template/Post';
+import { FriendList } from '../template/FriendList';
 
 export const Home = () => {
     const usernameCtx = useAuthUser();

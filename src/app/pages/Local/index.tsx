@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { People } from '../People'
-import { Header } from '../template/Header'
 import { UserData } from '@/app/data/userData'
 import { useFollower } from '@/contexts/Follower'
+import { Header } from '../template/Header'
+import { People } from '../People'
 
-export const PeopleLocal: React.FC = () => {
+export const PeopleLocal = () => {
     const [toFollow] = useState(UserData);
     const follow = useFollower();
 
