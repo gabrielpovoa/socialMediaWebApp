@@ -2,7 +2,7 @@
 import { useState } from "react"
 import { Menu } from "./Menu"
 import { Bell } from "./Bell";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { UserProfile } from "./ProfileAvatar";
 
 export const Header = () => {
@@ -26,7 +26,9 @@ export const Header = () => {
       <nav id="headerNav" className="flex items-center justify-between flex-1">
         <div className="flex items-center gap-8">
           <div className="flex items-center justify-center text-4xl bg-gray-300 w-[5rem] h-[5rem] p-8 rounded-full">
+            <Link to="/Home">
             🐘
+            </Link>
           </div>
           <div className="text-3xl cursor-pointer p-3 rounded-lg" style={{ background: "#FBF9FF" }} onClick={toggleMenu}> ☰</div>
         </div>

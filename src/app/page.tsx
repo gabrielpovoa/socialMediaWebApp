@@ -1,5 +1,5 @@
 'use client'
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, useNavigate } from "react-router-dom";
 import { RouteList } from "./Route/RouteList";
 import { UserLoginProvider } from "@/contexts/LoginUser";
 import { FollowrProvider } from "@/contexts/Follower";

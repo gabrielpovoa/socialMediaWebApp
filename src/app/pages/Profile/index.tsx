@@ -30,7 +30,7 @@ export const Profile = () => {
         });
     }
 
-    const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleFileChange = (e: ChangeEvent<HTMLInputElement | any>) => {
         const file = e.target.files[0];
         photoFilectx?.setPhotoFile(file);
 
