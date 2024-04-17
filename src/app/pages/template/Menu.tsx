@@ -20,7 +20,7 @@ export const Menu = ({ closeModal }: Props) => {
                 [X]
             </div>
             <nav className='hamburger '>
-                <ul className='sm:gap-0 md:gap-4 lg:gap-6 xl:gap-6'>
+                <ul className='sm:gap-0 md:gap-2 lg:gap-4 xl:gap-4'>
                     <li>
                         <Link to="/Home">
                             Home
@@ -34,6 +34,11 @@ export const Menu = ({ closeModal }: Props) => {
                     <li>
                         <Link to="/People">
                             People
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/">
+                            Log Out
                         </Link>
                     </li>
                 </ul>
